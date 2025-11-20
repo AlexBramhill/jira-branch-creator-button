@@ -1,11 +1,14 @@
 import { createSignal, onMount } from "solid-js";
-import { saveUrl, getUrl } from "../repository/chromeStorageSync";
+import {
+  saveUrlFragment,
+  getUrlFragment,
+} from "../../shared/repository/chromeStorageSync";
 
 export default function UrlInput() {
   const [inputValue, setInputValue] = createSignal("");
 
   onMount(async () => {
-    const savedValue = await getUrl();
+    const savedValue = await getUrlFragment();
     console.log("Loaded from storage:", savedValue);
     if (savedValue) {
       setInputValue(savedValue);
@@ -15,7 +18,7 @@ export default function UrlInput() {
   const handleInputChange = async (e: Event) => {
     const value = (e.target as HTMLInputElement).value;
     setInputValue(value);
-    await saveUrl(value);
+    await saveUrlFragment(value);
     console.log("Saved to storage:", value);
   };
 
