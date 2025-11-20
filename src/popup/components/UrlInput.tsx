@@ -25,14 +25,18 @@ export default function UrlInput() {
   return (
     <div>
       <label for="url-input">URL:</label>
-      <input
-        id="url-input"
-        type="text"
-        value={inputValue()}
-        onInput={handleInputChange}
-        placeholder="Enter URL..."
-        style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"
-      />
+      <div style="display: flex; gap: 4px;">
+        <span>https://</span>
+        <input
+          id="url-input"
+          type="text"
+          value={inputValue()}
+          onInput={handleInputChange}
+          placeholder="example.atlassian.net"
+          style="flex: 1"
+        />
+        <span>/</span>
+      </div>
     </div>
   );
 }
