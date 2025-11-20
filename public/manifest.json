@@ -12,5 +12,15 @@
     "default_popup": "pages/popup.html",
     "default_icon": "jira_branch_creator.png"
   },
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.atlassian.net/*", "*://*.jira.com/*"],
+      "js": ["content/content.js"]
+    }
+  ],
   "host_permissions": ["*://*.atlassian.net/*", "*://*.jira.com/*"]
 }
