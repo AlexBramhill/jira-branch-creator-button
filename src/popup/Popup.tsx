@@ -1,11 +1,11 @@
-import { createSignal } from "solid-js";
+import UrlInput from "./components/UrlInput";
 
 export default function Popup() {
-  const [count, setCount] = createSignal(0);
   return (
-    <div style="padding: 16px;">
-      <h1>Hello from SolidJS!</h1>
-      <button onClick={() => setCount(count() + 1)}>Count: {count()}</button>
+    <div style="min-width: 400px; padding: 16px;">
+      <h1>Jira Branch Creator</h1>
+      <p>Add all Jira url you want to enable this extension for below.</p>
+      <UrlInput />
     </div>
   );
 }
