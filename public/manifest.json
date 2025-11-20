@@ -9,7 +9,7 @@
   },
   "action": {
     "default_title": "Jira Branch Creator",
-    "default_popup": "popup.html",
+    "default_popup": "src/popup/index.html",
     "default_icon": "jira_branch_creator.png"
   },
   "host_permissions": ["*://*.atlassian.net/*", "*://*.jira.com/*"]
