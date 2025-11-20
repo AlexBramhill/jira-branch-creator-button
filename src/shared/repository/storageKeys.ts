@@ -1,7 +1,7 @@
 interface StorageData {
-  savedUrlFragment: string;
+  savedHostname: string;
 }
 
 export const storageKeys = {
-  savedUrlFragment: "savedUrlFragment",
+  savedHostname: "savedHostname",
 } as const satisfies { [K in keyof StorageData]: K };

@@ -1,12 +1,12 @@
 import { storageKeys } from "./storageKeys";
 
-export const saveUrlFragment = async (urlFragment: string): Promise<void> => {
+export const saveHostname = async (hostname: string): Promise<void> => {
   await chrome.storage.sync.set({
-    [storageKeys.savedUrlFragment]: urlFragment,
+    [storageKeys.savedHostname]: hostname,
   });
 };
 
-export const getUrlFragment = async (): Promise<string | null> => {
-  const result = await chrome.storage.sync.get([storageKeys.savedUrlFragment]);
-  return result[storageKeys.savedUrlFragment] || null;
+export const getHostname = async (): Promise<string | null> => {
+  const result = await chrome.storage.sync.get([storageKeys.savedHostname]);
+  return result[storageKeys.savedHostname] || null;
 };
