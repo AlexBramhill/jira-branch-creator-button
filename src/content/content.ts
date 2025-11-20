@@ -12,6 +12,8 @@ const isOnJiraPage = async () => {
   return hostname && hostname === currentPageUrl.hostname;
 };
 
-if (await isOnJiraPage()) {
-  document.body.style.border = "5px solid red";
-}
+(async () => {
+  if (await isOnJiraPage()) {
+    document.body.style.border = "5px solid red";
+  }
+})();
