@@ -1,4 +1,6 @@
 import { getHostname } from "../shared/repository/chromeStorageSync";
+import { allSelectorStrategies } from "./ticket-selector-strategies/allStrategies";
+import { processPage } from "./ticket-selector/ticketSelector";
 import { removeWwwPrefix } from "./urlHelper";
 
 console.log("Content script loaded!");
@@ -20,5 +22,6 @@ const isOnJiraPage = async () => {
   if (await isOnJiraPage()) {
     console.log("On Jira page, applying border style.");
     document.body.style.border = "5px solid red";
+    processPage(allSelectorStrategies);
   }
 })();
