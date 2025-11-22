@@ -9,7 +9,7 @@ export const injectCopyTextButtonStrategy: IContainerProcessorStrategy = {
     container: HTMLElement;
     ticketSelectorStrategy: ITicketSelectorStrategy;
   }) => {
-    const text = "Test Text";
+    const text = getTextToCopy(ticketSelectorStrategy, container);
     console.log("Injecting button into container:", container);
 
     const buttonId = `copy-button-${text}`; // TODO hash the strategy and add here
@@ -40,4 +40,16 @@ const createButton = (buttonId: string, ticketName: string) => {
     navigator.clipboard.writeText(ticketName);
   };
   return button;
+};
+
+// TODO make this customisable
+const getTextToCopy = (
+  ticketSelectorStrategy: ITicketSelectorStrategy,
+  container: HTMLElement
+): string => {
+  const prefixElement = ticketSelectorStrategy.selectPrefixElement(container);
+  const titleElement = ticketSelectorStrategy.selectTitleElement(container);
+  const prefixText = prefixElement ? prefixElement.textContent?.trim() : "";
+  const titleText = titleElement ? titleElement.textContent?.trim() : "";
+  return `${prefixText}: ${titleText}`.replace(/\s+/g, "-");
 };
