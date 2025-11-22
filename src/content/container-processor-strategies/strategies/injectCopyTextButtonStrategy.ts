@@ -34,7 +34,9 @@ const createButton = (buttonId: string, ticketName: string) => {
   button.id = buttonId;
   button.textContent = "Copy Branch Name";
   button.style.marginLeft = "8px";
-  button.onclick = () => {
+  button.onclick = (event) => {
+    event.stopPropagation();
+    event.preventDefault();
     navigator.clipboard.writeText(ticketName);
   };
   return button;
